@@ -1,0 +1,96 @@
+{
+  "source": "code archive",
+  "capabilities": [
+    {
+      "capability": "application code and routes",
+      "source": "React/TanStack app in attached archive",
+      "outcome": "Recreate the food discovery, recipe library, sample image analysis, and project information screens in the current app",
+      "status": "verified",
+      "next_action": "Core pages, recipe search/cooking, sign-in screens, and sample-result flow were checked in the preview; original user/history exports and production cutover details remain pending separately."
+    },
+    {
+      "capability": "database schema",
+      "source": "Drizzle migration files for profiles, dish history, and source-account mapping",
+      "outcome": "Recreate the schema in Lovable Cloud with row-level access controls",
+      "status": "verified",
+      "next_action": "Cloud history, profiles, verified-email mapping tables, policies, and profile signup trigger applied; linter reports no findings."
+    },
+    {
+      "capability": "application records",
+      "source": "No database record export was attached",
+      "outcome": "Import existing dish history after receiving sanitized table exports",
+      "status": "pending",
+      "next_action": "Request CSV/JSON exports of application tables after preview"
+    },
+    {
+      "capability": "auth identities and profiles",
+      "source": "Source archive contains account-linking migration code but no user export; source UI currently uses demo local storage",
+      "outcome": "Use Lovable Cloud accounts and preserve verified identity/profile mappings when user export arrives",
+      "status": "pending",
+      "next_action": "Request user export with original IDs, email addresses, and profile fields after preview"
+    },
+    {
+      "capability": "authorization",
+      "source": "Per-user account history and verified-email source-account linking",
+      "outcome": "Rebuild per-user access with Cloud authentication and row-level policies",
+      "status": "in_progress",
+      "next_action": "Per-user history policies and auth flows are implemented; signed-in history reads/writes need verification after a Cloud account exists."
+    },
+    {
+      "capability": "uploaded file bytes",
+      "source": "Archive includes image asset pointer files, not original binary image files",
+      "outcome": "Preserve and verify referenced dish/sample images; original file bytes are not part of the archive",
+      "status": "pending",
+      "next_action": "The archive omitted original image bytes and the preview uses replacement photos; attach original files if exact source imagery must be preserved."
+    },
+    {
+      "capability": "external providers",
+      "source": "No third-party production provider integration detected in inspected app code",
+      "outcome": "No external provider migration identified",
+      "status": "not_applicable",
+      "next_action": "None detected"
+    },
+    {
+      "capability": "AI image analysis",
+      "source": "Sample result records; app copy says uploaded images are not analyzed",
+      "outcome": "Preserve sample-only analysis behavior and disclose that live recognition is not enabled",
+      "status": "verified",
+      "next_action": "Sample-only results and the source disclosure were verified in the preview; live uploaded-image recognition remains intentionally unavailable, matching the archive."
+    },
+    {
+      "capability": "public endpoints and callbacks",
+      "source": "No public API routes, OAuth callbacks, or webhook handlers detected",
+      "outcome": "No external endpoint migration identified",
+      "status": "not_applicable",
+      "next_action": "None detected"
+    },
+    {
+      "capability": "webhooks and schedules",
+      "source": "No webhook or schedule configuration detected",
+      "outcome": "No scheduled or webhook behavior identified",
+      "status": "not_applicable",
+      "next_action": "None detected"
+    },
+    {
+      "capability": "secrets",
+      "source": "Archive .env excluded from inspection; no user-owned provider secrets identified",
+      "outcome": "Do not copy source secrets; no retained external provider currently requires credentials",
+      "status": "not_applicable",
+      "next_action": "None detected"
+    },
+    {
+      "capability": "cutover",
+      "source": "No published source URL or domain was supplied",
+      "outcome": "No production cutover performed",
+      "status": "pending",
+      "next_action": "Confirm source URL and cutover timing if a published deployment exists"
+    },
+    {
+      "capability": "verification",
+      "source": "Migration preview",
+      "outcome": "Verify public screens, sample analysis, search/filtering, recipe steps, and Cloud account/history flows",
+      "status": "in_progress",
+      "next_action": "Home, recipe search/cooking, sample results, and sign-in UI passed preview checks; authenticated Cloud history/auth behavior cannot be checked until a user account exists."
+    }
+  ]
+}

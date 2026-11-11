@@ -1,0 +1,3 @@
+import { createServerFn } from "@tanstack/react-start";
+import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+export const claimImportedProfile = createServerFn({ method: "POST" }).middleware([requireSupabaseAuth]).handler(async ({ context }) => { const { data, error } = await context.supabase.auth.getUser(); if (error) throw error; const authUser = data.user; if (!authUser?.email || !authUser.email_confirmed_at) return null; const { supabaseAdmin } = await import("@/integrations/supabase/client.server"); const { data: displayName, error: claimError } = await supabaseAdmin.rpc("claim_imported_profile", { _auth_user_id: authUser.id, _verified_email: authUser.email }); if (claimError) throw claimError; return displayName || null; });

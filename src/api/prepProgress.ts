@@ -1,0 +1,4 @@
+const storageKey = "soi-banh-prep-progress";
+type ProgressMap = Record<string, string[]>;
+function readProgress(): ProgressMap { if (typeof window === "undefined") return {}; try { const parsed: unknown = JSON.parse(window.localStorage.getItem(storageKey) ?? "{}"); return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed as ProgressMap : {}; } catch { return {}; } }
+export const prepProgress = { get(slug: string): string[] { const items = readProgress()[slug]; return Array.isArray(items) ? items : []; }, set(slug: string, values: string[]) { try { window.localStorage.setItem(storageKey, JSON.stringify({ ...readProgress(), [slug]: values })); } catch { /* Optional local cooking progress. */ } }, clear(slug: string) { const state = readProgress(); delete state[slug]; try { window.localStorage.setItem(storageKey, JSON.stringify(state)); } catch { /* Optional local cooking progress. */ } } };
